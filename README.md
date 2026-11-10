@@ -2,7 +2,7 @@
 
 An interactive database of protease expression in all 33 TCGA cancer types. It shows bulk RNA-seq (TCGA tumours vs GTEx and adjacent normal tissue) together with single-cell evidence from CZ CELLxGENE.
 
-**Open it:** [the GitHub Pages address of this repository.](https://chenru1z.github.io/protease-atlas/#nominate-COAD)
+**Open it:** (https://chenru1z.github.io/protease-atlas/#nominate-COAD)
 
 On the site you can:
 
