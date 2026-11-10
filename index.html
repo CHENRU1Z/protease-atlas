@@ -868,7 +868,7 @@ function renderCancer(d) {
   fill($('#cancer-head'),
     h('div', { class: 'eyebrow' }, `${c.code} · `, designPill(c.design)),
     h('h2', { text: c.name }),
-    h('p', { class: 'muted', text: `Focus: ${c.focus.toLowerCase()} vs normal. Samples: ${nText}.${c.n_unstaged_dropped ? ` ${c.n_unstaged_dropped} unstaged tumours dropped.` : ''}` }),
+    h('p', { class: 'muted', text: `Focus: ${c.focus === 'Stage I' ? 'Stage I tumours' : 'all tumours'} vs normal. Samples: ${nText}.${c.n_unstaged_dropped ? ` ${c.n_unstaged_dropped} unstaged tumours dropped.` : ''}` }),
     flag ? h('div', { class: 'flag', text: flag }) : null,
     c.notes ? h('p', { class: 'note', text: `Note: ${c.notes}.` }) : null,
     h('p', { class: 'small muted', text: d.singlecell ? `Single-cell: CELLxGENE tissue ${d.singlecell.tissue}, data snapshot ${d.singlecell.snapshot}.` : 'Single-cell: no CELLxGENE data is mapped for this cancer type.' }));
@@ -954,7 +954,7 @@ function renderNominate(d) {
   $$('[data-view="nominate"] .grid-2').forEach(g => { g.hidden = !usable; });
   const armsText = d.arms.gtex && d.arms.adj ? 'against GTEx and against adjacent normal, in the same direction,' : `against ${d.arms.gtex ? 'GTEx' : 'adjacent normal'}`;
   $('#nom-intro').textContent = usable
-    ? `${d.code}: a gene qualifies if it is significant ${armsText} and expressed in the focus tumours (${d.cohort.focus.toLowerCase()}). The limma statistics are fixed; changing a rule re-applies step 04 to every panel gene.`
+    ? `${d.code}: a gene qualifies if it is significant ${armsText} and expressed in the focus tumours (${d.cohort.focus === 'Stage I' ? 'Stage I' : 'all tumours'}). The limma statistics are fixed; changing a rule re-applies step 04 to every panel gene.`
     : `${d.code} has no normal tissue to compare with.`;
   if (!usable) return;
   runNomination(d);
